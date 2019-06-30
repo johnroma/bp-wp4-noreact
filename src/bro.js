@@ -1,7 +1,5 @@
-const bro = (greeting) => {
-  console.log("heard that", greeting);
+const bro = greeting => {
+  return `${greeting},  bro`
+}
 
-  return `${greeting},  bro`;
-};
-
-export { bro as default };
+export { bro as default }

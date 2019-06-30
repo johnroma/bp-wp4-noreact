@@ -1,23 +1,27 @@
 module.exports = {
+  env: { es6: true },
 
-    "extends": "airbnb-base",
-    "parserOptions": {
-      "ecmaVersion": 2018,
-      "sourceType": "module"
-    },
-    "rules": {
-      "quotes": ["error", "double", { "allowTemplateLiterals": true }],
-        "max-len": ["error", 80]
-      },
-      "env": {
-        "browser": true,
-        "es6": true
-      },
-      "settings": {
-        "import/resolver": {
-          "webpack": {
-            "config": "./webpack-config.js"
-          }
-        }
+  extends: ['airbnb-base', 'stylelint'],
+
+  parserOptions: {
+    ecmaVersion: 2019,
+    sourceType: 'module'
+  },
+
+
+  settings: {
+    'import/resolver': {
+      webpack: {
+        config: './webpack-config.js'
       }
+    }
+  },
+  rules: {
+    "node/no-unsupported-features/es-syntax": ["warning", {
+      "version": ">=8.0.0",
+      "ignores": []
+  }],
+  'quotes': ['error', 'double', { allowTemplateLiterals: true }],
+    'max-len': ['error', 80]
+  },
 };

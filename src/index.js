@@ -1,4 +1,4 @@
-import bro from "./bro";
-import "./styles/main.scss";
+import bro from "./bro"
+import "./styles/main.scss"
 
-console.log(bro(" abc"));
+console.log(bro(" abc"))
