@@ -1,4 +1,4 @@
 import bro from "./bro";
-import style from "./main.css";
+import "./styles/main.scss";
 
 console.log(bro(" abc"));
