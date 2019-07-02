@@ -14,17 +14,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(png|svg|jpg|gif)$/,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "./images/[hash].[ext]"
-            }
-          }
-        ]
-      },
-      {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
@@ -51,6 +40,18 @@ module.exports = {
         ]
       },
       {
+        test: /\.(png|jp(e*)g|svg)$/,
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 8000,
+              name: "images/[name]-[hash].[ext]"
+            }
+          }
+        ]
+      },
+      {
         test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
         use: [
           {
@@ -61,11 +62,13 @@ module.exports = {
             }
           }
         ]
-      }
+      },
+      { test: [/.ico$/], loader: "file?name=[name].[ext]" }
     ]
   },
   plugins: [
     new HtmlWebPackPlugin({
+      favicon: "./src/favicon.ico",
       template: "./src/index.html",
       inject: true,
       chunks: ["index", "page", "script"],
