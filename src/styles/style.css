@@ -1,0 +1,19 @@
+.bb-1 [class^=icon-]{
+	color: #4262F6;
+}
+
+.download_appicon {
+	position:absolute;
+	top: 0px;
+	right: 15px;
+}
+
+.appicon {
+	width: 72px;
+	height: 72px;
+}
+
+.apple-watch {
+	height: 37px;
+	margin-bottom: 10px;
+}
