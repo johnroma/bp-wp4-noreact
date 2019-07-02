@@ -15,7 +15,14 @@ module.exports = {
     rules: [
       {
         test: /\.(png|svg|jpg|gif)$/,
-        use: ["file-loader"]
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "./images/[hash].[ext]"
+            }
+          }
+        ]
       },
       {
         test: /\.js$/,
@@ -42,6 +49,18 @@ module.exports = {
           "postcss-loader",
           "sass-loader"
         ]
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]",
+              outputPath: "fonts/"
+            }
+          }
+        ]
       }
     ]
   },
@@ -49,14 +68,20 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: "./src/index.html",
       inject: true,
-      chunks: ["index"],
+      chunks: ["index", "page", "script"],
       filename: "./index.html"
     }),
     new HtmlWebPackPlugin({
-      template: "./src/about.html",
+      template: "./src/helloworld.html",
+      inject: true,
+      chunks: ["index"],
+      filename: "./helloworld.html"
+    }),
+    new HtmlWebPackPlugin({
+      template: "./src/theme_index.html",
       inject: true,
       chunks: ["index", "page", "script"],
-      filename: "./about.html"
+      filename: "./theme_index.html"
     }),
     new MiniCssExtractPlugin({
       filename: "[name].css",
